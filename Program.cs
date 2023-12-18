@@ -135,14 +135,14 @@ namespace Practice_Linq
             //Query 6: Вивести всі матчі останнього чемпіоната світу з футболу (FIFA World Cup), починаючи з чвертьфіналів (тобто останні 8 матчів).
             //Матчі мають відображатися від фіналу до чвертьфіналів (тобто у зворотній послідовності).
 
-            var selectedGames = games;   // Корегуємо запит !!!
+            var selectedGames = games.Where(game => game.Tournament == "FIFA WorldCup").OrderByDescending(game => game.Date).Take(8);
 
 
             // Перевірка
             Console.WriteLine("\n======================== QUERY 6 ========================");
 
             // див. приклад як має бути виведено:
-
+            foreach (FootballGame game in selectedGames) { Print(game); }
 
         }
 
@@ -151,14 +151,15 @@ namespace Practice_Linq
         {
             //Query 7: Вивести перший матч у 2023 році, в якому збірна України виграла.
 
-            FootballGame g = null;   // Корегуємо запит !!!
+            FootballGame g = games.Where(game => game.Date.Year == 2023 && ((game.Home_team == "Ukraine" && game.Home_score > game.Away_score) ||
+            (game.Away_team == "Ukraine" && game.Away_score > game.Home_score))).OrderBy(game => game.Date).First();
 
 
             // Перевірка
             Console.WriteLine("\n======================== QUERY 7 ========================");
 
             // див. приклад як має бути виведено:
-
+            Print(g);
 
         }
 
