@@ -119,7 +119,8 @@ namespace Practice_Linq
             //Query 5: Вивести всі кваліфікаційні матчі (UEFA Euro qualification), які відбулися у Києві чи у Харкові, а також за умови перемоги української збірної.
 
 
-            var selectedGames = games.Where(game => game.Tournament == "UEFA Euro qualification" && (game.City == "Kyiv" || game.City == "Kharkiv") && game.Home_score > game.Away_score);
+            var selectedGames = games.Where(game => game.Tournament == "UEFA Euro qualification" && (game.City == "Kyiv" || game.City == "Kharkiv") && 
+            game.Home_score > game.Away_score);
 
 
             // Перевірка
@@ -136,7 +137,7 @@ namespace Practice_Linq
             //Query 6: Вивести всі матчі останнього чемпіоната світу з футболу (FIFA World Cup), починаючи з чвертьфіналів (тобто останні 8 матчів).
             //Матчі мають відображатися від фіналу до чвертьфіналів (тобто у зворотній послідовності).
 
-            var selectedGames = games.Where(game => game.Tournament == "FIFA WorldCup").OrderByDescending(game => game.Date).Take(8);
+            var selectedGames = games.Where(game => game.Tournament == "FIFA World Cup").OrderByDescending(game => game.Date).Take(8);
 
 
             // Перевірка
@@ -181,7 +182,6 @@ namespace Practice_Linq
                 Console.WriteLine($"{game.MatchYear} {game.Team1} - {game.Team2}, Goals: {game.Goals}");
 
         }
-
 
         // Запит 9
         static void Query9(List<FootballGame> games)
